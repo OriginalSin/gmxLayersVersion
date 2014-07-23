@@ -7,7 +7,7 @@ L.gmx.WorkerManager = function(url, onError) {  // добавить worker
     var workerItem = {
         currCommand: {}
         ,send: function(ph, onMsg, attr) {
-            var cmdId = gmxAPIutils.newMapId();
+            var cmdId = gmxAPIutils.newId();
             workerItem.currCommand[cmdId] = {onMsg: onMsg, attr: attr};
             console.log('message to worker ' , ph);
             worker.postMessage({id: cmdId, cmd: 'inCmd', msg: ph});
