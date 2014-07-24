@@ -16,9 +16,8 @@ L.gmx.gmxLayersVersion = function(worker) {
             for (var i = 0, len = ev.Result.length; i < len; i++) {
                 var pt = ev.Result[i],
                     prop = pt.properties,
-                    id = prop.name,
-                    layer = layers[id];
-                if (layer && 'updateVersion' in layer) layer.updateVersion(prop);
+                    layer = layers[prop.name];
+                if (layer && 'updateVersion' in layer) layer.updateVersion(pt);
             }
         }
     }
