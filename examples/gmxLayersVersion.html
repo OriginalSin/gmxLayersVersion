@@ -49,7 +49,7 @@
 	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
 	<script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet-src.js"></script>
 
-	<script src="../../Leaflet-GeoMixer/build/leaflet-geomixer-dev.js?key=U92596WMIH"></script>
+	<script src="http://scanex.github.io/Leaflet-GeoMixer/build/leaflet-geomixer-dev.js?key=U92596WMIH"></script>
 
 	<script src="../src/gmxWorkerManager.js"></script>
 	<script src="../src/gmxLayersVersion.js"></script>
@@ -58,8 +58,9 @@
 	<div id="map"></div>
      <div id="infoPanel">
         <span id="info">
-                Layer version <button id="Updated">Updated</button> <button id="Inserted">Inserted</button> <button id="Deleted">Deleted</button>
+                Update objects in <a target="_blank" href="http://maps.kosmosnimki.ru/api/index.html?permalink=TMTM1&UIRCQ">other window</a>
         </span>
+        
     </div>
 
 	<script>
@@ -71,9 +72,10 @@
 		});
 
         L.gmx.loadLayers([
-            {mapID: 'UIRCQ', layerID: 'B0A30EF77D7F4182B302B9F7CB83CA25'}
+            {mapID: 'UIRCQ', layerID: '8BE053965DD840D4BC0206435571CE1B'}
         ]).then(function(testLayer) {
             osm.addTo(map);
+            testLayer.addTo(map);
             
             var baseLayers = {
                 OSM: osm
@@ -82,23 +84,7 @@
             }; 
 
             L.control.layers(baseLayers, overlays, {collapsed: false}).addTo(map);
-
-            document.getElementById("Updated").onclick = function() {
-                var it = {"Status":"ok","Result":[{"properties":{"Access":"edit","name":"B0A30EF77D7F4182B302B9F7CB83CA25","title":"test4List","description":"","Owner":"LayerManager","LayerVersion":709,"LayerID":"B0A30EF77D7F4182B302B9F7CB83CA25","type":"Vector","EncodeSource":null,"VtMinZoom":1,"VtMaxZoom":1,"MinZoom":1,"MaxZoom":1,"date":"27.02.2013","Copyright":"","Legend":null,"MetaProperties":{"shiftX":{"Type":"String","Value":"0"},"shiftY":{"Type":"String","Value":"0"},"test":{"Type":"String","Value":"23"},"dxfxc":{"Type":"String","Value":"2"},"multiFilters":{"Type":"String","Value":"0"}},"identityField":"ogc_fid","NameObject":"","tiles":[-1,-1,1,-1,0,1,0,-1,1,0,0,1],"tilesVers":[656,664,656,667],"Processing":{"Updated":[{"id":2,"properties":{"ogc_fid":"2","t1":"kk","t2":"12345"},"geometry":{"type":"POLYGON","coordinates":[[[9960050.53,9392582.0399217978],[5792092.26,7983694.7297642715],[3735426.78,5165920.11856702],[8296780.7981861718,5420302.5484396173],[9960050.53,9392582.0399217978]]]}}]},"GeometryType":"polygon","attributes":["t1","t2"],"attrTypes":["string","float"]},"geometry":{"type":"POLYGON","coordinates":[[[-352221.83,-195022.72],[-352221.83,10977580.254098354],[11055851.771167895,10977580.254098354],[11055851.771167895,-195022.72],[-352221.83,-195022.72]]]}}],"CallbackName":"gmxAPI_id15"};
-                testLayer.updateVersion(it.Result[0]);
-            }
-
-            document.getElementById("Inserted").onclick = function() {
-                var it = {"Status":"ok","Result":[{"properties":{"Access":"edit","name":"B0A30EF77D7F4182B302B9F7CB83CA25","title":"test4List","description":"","Owner":"LayerManager","LayerVersion":709,"LayerID":"B0A30EF77D7F4182B302B9F7CB83CA25","type":"Vector","EncodeSource":null,"VtMinZoom":1,"VtMaxZoom":1,"MinZoom":1,"MaxZoom":1,"date":"27.02.2013","Copyright":"","Legend":null,"MetaProperties":{"shiftX":{"Type":"String","Value":"0"},"shiftY":{"Type":"String","Value":"0"},"test":{"Type":"String","Value":"23"},"dxfxc":{"Type":"String","Value":"2"},"multiFilters":{"Type":"String","Value":"0"}},"identityField":"ogc_fid","NameObject":"","tiles":[-1,-1,1,-1,0,1,0,-1,1,0,0,1],"tilesVers":[656,664,656,667],"Processing":{"Inserted":[{"id":5,"properties":{"ogc_fid":"5","t1":"123","t2":"123"},"geometry":{"type":"POLYGON","coordinates":[[[3111292.7993198144,10977580.254098354],[11055851.771167895,10977580.254098354],[11055851.771167895,7240115.3186942609],[3111292.7993198144,7240115.3186942609],[3111292.7993198144,10977580.254098354]]]}}]},"GeometryType":"polygon","attributes":["t1","t2"],"attrTypes":["string","float"]},"geometry":{"type":"POLYGON","coordinates":[[[-352221.83,-195022.72],[-352221.83,10977580.254098354],[11055851.771167895,10977580.254098354],[11055851.771167895,-195022.72],[-352221.83,-195022.72]]]}}],"CallbackName":"gmxAPI_id11"};
-                testLayer.updateVersion(it.Result[0]);
-            }
-            document.getElementById("Deleted").onclick = function() {
-                var it = {"Status":"ok","Result":[{"properties":{"Access":"edit","name":"B0A30EF77D7F4182B302B9F7CB83CA25","title":"test4List","description":"","Owner":"LayerManager","LayerVersion":709,"LayerID":"B0A30EF77D7F4182B302B9F7CB83CA25","type":"Vector","EncodeSource":null,"VtMinZoom":1,"VtMaxZoom":1,"MinZoom":1,"MaxZoom":1,"date":"27.02.2013","Copyright":"","Legend":null,"MetaProperties":{"shiftX":{"Type":"String","Value":"0"},"shiftY":{"Type":"String","Value":"0"},"test":{"Type":"String","Value":"23"},"dxfxc":{"Type":"String","Value":"2"},"multiFilters":{"Type":"String","Value":"0"}},"identityField":"ogc_fid","NameObject":"","tiles":[-1,-1,1,-1,0,1,0,-1,1,0,0,1],"tilesVers":[656,663,656,663],"Processing":{"Deleted":[5]},"GeometryType":"polygon","attributes":["t1","t2"],"attrTypes":["string","float"]},"geometry":{"type":"POLYGON","coordinates":[[[-2445984.9051256403,-195022.72],[-2445984.9051256403,10684062.065477882],[10566654.790000001,10684062.065477882],[10566654.790000001,-195022.72],[-2445984.9051256403,-195022.72]]]}}],"CallbackName":"gmxAPI_id6"};
-                testLayer.updateVersion(it.Result[0]);
-            }
-            
         });
-var tt = 1;        
 	</script>
 </body>
 </html>

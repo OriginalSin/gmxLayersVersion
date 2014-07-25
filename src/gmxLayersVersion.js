@@ -6,7 +6,7 @@ L.gmx.gmxLayersVersion = function(worker) {
     var layers = {},
         notActive = false;
     var callback = function(ev) {
-        console.log('gmxLayersVersion callback' , arguments);
+        //console.log('gmxLayersVersion callback' , arguments);
         var isPageHidden = gmxAPIutils.isPageHidden();
         if (notActive !== isPageHidden) {
             notActive = isPageHidden;
@@ -80,5 +80,21 @@ L.Map.addInitHook(function () {
     this
         .on('layeradd', gmxLayersVersion.layeradd, this)
         .on('layerremove', gmxLayersVersion.layerremove, this);
+});
+
+L.gmx.VectorLayer.include({
+    updateVersion: function (layerDescription) {
+        if (layerDescription) {
+            var gmx = this._gmx;
+            if (layerDescription.properties) {
+                var prop = layerDescription.properties;
+                gmx.dataManager.initTileList(prop);
+                gmx.properties.LayerVersion = prop.LayerVersion;
+            }
+            if (layerDescription.geometry) {
+                // todo: update layer geometry
+            }
+        }
+    }
 });
 

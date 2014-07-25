@@ -9,7 +9,7 @@ L.gmx.WorkerManager = function(url, onError) {  // добавить worker
         ,send: function(ph, onMsg, attr) {
             var cmdId = gmxAPIutils.newId();
             workerItem.currCommand[cmdId] = {onMsg: onMsg, attr: attr};
-            console.log('message to worker ' , ph);
+            //console.log('message to worker ' , ph);
             worker.postMessage({id: cmdId, cmd: 'inCmd', msg: ph});
         }
         ,terminate: function() {			// Прекратить работу объекта Worker
